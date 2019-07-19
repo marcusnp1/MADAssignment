@@ -21,50 +21,53 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Timer"
+        android:id="@+id/text_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Timer"
+        android:text="00:00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/videoView" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_1min"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        android:onClick="onClick"
+        android:text="1 MIN"
+        app:layout_constraintBottom_toBottomOf="@+id/button_2min"
+        app:layout_constraintEnd_toStartOf="@+id/button_2min"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintTop_toTopOf="@+id/button_2min" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_2min"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Button"
+        android:onClick="onClick"
+        android:text="2 MIN"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Timer" />
+        app:layout_constraintTop_toBottomOf="@+id/text_timer" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button_3min"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        android:onClick="onClick"
+        android:text="3 MIN"
+        app:layout_constraintBottom_toBottomOf="@+id/button_2min"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintStart_toEndOf="@+id/button_2min"
+        app:layout_constraintTop_toTopOf="@+id/button_2min" />
 </android.support.constraint.ConstraintLayout>
