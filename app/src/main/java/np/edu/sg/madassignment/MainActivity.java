@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(MainActivity.this, main2.class);
-
                 String selectedItem = (String) parent.getItemAtPosition(position);
                 intent.putExtra("ID", selectedItem);
                 startActivity(intent);

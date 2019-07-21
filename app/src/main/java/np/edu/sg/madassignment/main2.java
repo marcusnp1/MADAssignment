@@ -33,29 +33,33 @@ public class main2 extends AppCompatActivity
         Intent intent = getIntent();
         String grpName = ((Intent) intent).getStringExtra("ID");
         switch(grpName) {
-            case ("Aerobic Exercise"):
+            case "Aerobic Exercise":
                 imgexercise.setImageResource(R.drawable.march);
                 title.setText("Marching");
-                description.setText("Marching is a good exercise for your heart and lungs\n" +
-                        "Bend your elbows and swing your arms as you lift your knees.\n" +
+                description.setText("Marching is a good exercise\nfor your heart and lungs\n" +
+                        "Bend your elbows and\nswing your arms as you lift your knees.\n" +
                         "Your Knee should be lifted up to stomach level");
-            case ("Strength Training"):
+                break;
+            case "Strength Training":
                 imgexercise.setImageResource(R.drawable.squat);
                 title.setText("Squating");
                 description.setText("Squating is a good exercise for your Muscles\n" +
-                        "Bend your hips and knees. Swinging arms forwards helps in balance\n" +
+                        "Bend your hips and knees.\nSwinging arms forwards helps in balance\n" +
                         "Your back should be kept straight");
-            case ("Stretching"):
+                break;
+            case "Stretching":
                 imgexercise.setImageResource(R.drawable.rotate);
                 title.setText("Single Knee Rotation");
                 description.setText("Single Knee Rotation is a good exercise for your flexibility\n" +
-                        "Bend your knee to the opposite direction while putting your foot on the thigh.\n" +
-                        "Pull your knee towards the opposite direction and hold for 10-30 seconds.");
-            case ("Balance Exercise"):
+                        "Bend your knee to the opposite direction\nwhile putting your foot on the thigh.\n" +
+                        "Pull your knee towards the\nopposite direction and hold for 10-30 seconds.");
+                break;
+            case "Balance Exercise":
                 imgexercise.setImageResource(R.drawable.kneelift);
+
                 title.setText("Standard Knee Lifting");
                 description.setText("Standard Knee Lifting is a good exercise for your stability\n" +
-                        "Lift your knee towards the ceiling as high as possible then lower it after you feel the stretch\n" +
+                        "Lift your knee towards the ceiling\nas high as possible then lower it\nafter you feel the stretch\n" +
                         "Repeat this 3-5 times with both legs.");
         }
     }
