@@ -80,17 +80,17 @@ public class main2 extends AppCompatActivity
 
 
         switch (pressed) {
-            case "1 MIN":
-                tv.setText("01:00");
-                startTimer(1);
+            case "5 MIN":
+                tv.setText("05:00");
+                startTimer(5);
                 break;
-            case "2 MIN":
-                tv.setText("02:00");
-                startTimer(2);
+            case "10 MIN":
+                tv.setText("10:00");
+                startTimer(10);
                 break;
-            case "3 MIN":
-                tv.setText("03:00");
-                startTimer(3);
+            case "15 MIN":
+                tv.setText("15:00");
+                startTimer(15);
                 break;
 
 
