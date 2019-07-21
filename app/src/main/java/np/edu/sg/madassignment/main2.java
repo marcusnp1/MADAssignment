@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -16,12 +17,14 @@ public class main2 extends AppCompatActivity
 {
     CountDownTimer cdt;
     TextView txt;
+    ImageView imgexercise;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main2); //set page to main2 OnStart
         txt = findViewById(R.id.text_timer);
-        imageView2.setImageResource(R.drawable.cat);
+        imgexercise = findViewById(R.id.imageView2);
+        imgexercise.setImageResource(R.drawable.squat);
     }
 
 
