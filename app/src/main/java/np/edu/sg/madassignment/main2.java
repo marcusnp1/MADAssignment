@@ -1,6 +1,7 @@
 package np.edu.sg.madassignment;
 
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 public class main2 extends AppCompatActivity
 {
@@ -19,7 +21,15 @@ public class main2 extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main2); //set page to main2 OnStart
         txt = findViewById(R.id.text_timer);
+        imageView2.setImageResource(R.drawable.cat);
     }
+
+
+
+
+
+
+
     public void onClick(View v) {
         Button b = (Button) v;
         String pressed = b.getText().toString();
