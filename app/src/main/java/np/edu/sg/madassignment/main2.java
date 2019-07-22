@@ -22,6 +22,7 @@ public class main2 extends AppCompatActivity
     TextView title;
     TextView description;
     ImageView imgexercise;
+    long timer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,17 +82,33 @@ public class main2 extends AppCompatActivity
 
         switch (pressed) {
             case "5 MIN":
-                tv.setText("05:00");
-                startTimer(5);
-                break;
+                if(timer == 0) {
+                    tv.setText("05:00");
+                    startTimer(5);
+                    break;
+                }
+                else{
+
+                }
+
             case "10 MIN":
-                tv.setText("10:00");
-                startTimer(10);
-                break;
+                if(timer == 0) {
+                    tv.setText("10:00");
+                    startTimer(10);
+                    break;
+                }
+                else {
+
+                }
             case "15 MIN":
-                tv.setText("15:00");
-                startTimer(15);
-                break;
+                if(timer == 0) {
+                    tv.setText("15:00");
+                    startTimer(15);
+                    break;
+                }
+                else{
+
+                }
 
 
         }
@@ -101,8 +118,12 @@ public class main2 extends AppCompatActivity
         cdt = new CountDownTimer(duration*60000,1000) {
             @Override
             public void onTick(long time){
-                txt.setText("" + (int)(time/60000) + ":"
-                        + String.format("%02d", (time%60000/1000)));
+                timer = time/1000;
+                long minute = timer / 60;
+                long seconds = timer % 60;
+                txt.setText(minute + ":" + seconds);
+                /*txt.setText("" + (int)(time/60000) + ":"
+                        + String.format("%02d", (time%60000/1000)));*/
 
             }
 
