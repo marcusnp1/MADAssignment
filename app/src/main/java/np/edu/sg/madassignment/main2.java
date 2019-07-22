@@ -21,6 +21,8 @@ public class main2 extends AppCompatActivity
     TextView txt;
     TextView title;
     TextView description;
+    Button commentbutton;
+    TextView commenttext;
     ImageView imgexercise;
     long timer;
     @Override
@@ -31,6 +33,8 @@ public class main2 extends AppCompatActivity
         title = findViewById(R.id.textView3);
         description = findViewById(R.id.textView4);
         imgexercise = findViewById(R.id.imageView2);
+        commentbutton = findViewById(R.id.btnComment);
+        commenttext = findViewById(R.id.txtComment);
         Intent intent = getIntent();
         String grpName = ((Intent) intent).getStringExtra("ID");
         switch(grpName) {
@@ -151,6 +155,13 @@ public class main2 extends AppCompatActivity
         }.start();
 
     }
-
+    public void addComment(View view) {
+        MyDBHandler dbHandler = new MyDBHandler(this, null, null, 1);
+        int id = 1;
+        String name = commenttext.getText().toString();
+        Comments comment = new Comments(id, name);
+        dbHandler.addHandler(comment);
+        commenttext.setText("");
+    }
 
 }
