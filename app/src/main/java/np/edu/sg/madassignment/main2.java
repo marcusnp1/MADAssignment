@@ -24,10 +24,12 @@ public class main2 extends AppCompatActivity
     Button commentbutton;
     TextView commenttext;
     ImageView imgexercise;
+    TextView comments;
     long timer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyDBHandler dbHandler = new MyDBHandler(this, null, null, 1);
         setContentView(R.layout.main2); //set page to main2 OnStart
         txt = findViewById(R.id.text_timer);
         title = findViewById(R.id.textView3);
@@ -35,6 +37,8 @@ public class main2 extends AppCompatActivity
         imgexercise = findViewById(R.id.imageView2);
         commentbutton = findViewById(R.id.btnComment);
         commenttext = findViewById(R.id.txtComment);
+        comments = findViewById(R.id.txtComments);
+        comments.setText(dbHandler.loadHandler());
         Intent intent = getIntent();
         String grpName = ((Intent) intent).getStringExtra("ID");
         switch(grpName) {
@@ -162,6 +166,8 @@ public class main2 extends AppCompatActivity
         Comments comment = new Comments(id, name);
         dbHandler.addHandler(comment);
         commenttext.setText("");
+        comments.setText(dbHandler.loadHandler());
+
     }
 
 }

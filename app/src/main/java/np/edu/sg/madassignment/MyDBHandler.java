@@ -26,7 +26,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_STUDENT_TABLE = "CREATE TABLE " +
-                TABLE_COMMENTS + "(" + COLUMN_ID + " INTEGER PRIMARY KEY," + COLUMN_NAME
+                TABLE_COMMENTS + "(" + COLUMN_ID + " ," + COLUMN_NAME
                 + " TEXT " + ")";
         db.execSQL(CREATE_STUDENT_TABLE);
 
@@ -75,7 +75,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             int result_0 = cursor.getInt(0);
             String result_1 = cursor.getString(1);
-            result += String.valueOf(result_0) + " " + result_1 +
+            result += String.valueOf(result_0) + "\n" + result_1 +
                     System.getProperty("line.separator");
         }
         cursor.close();
