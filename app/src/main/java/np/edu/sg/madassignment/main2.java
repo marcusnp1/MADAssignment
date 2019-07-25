@@ -74,18 +74,15 @@ public class main2 extends AppCompatActivity
     }
 
 
-
-
-
-
-
     public void onClick(View v) {
         Button b = (Button) v;
         String pressed = b.getText().toString();
 
 
         TextView tv = findViewById(R.id.text_timer);
+        /*
         tv.setText(pressed);
+        */
 
 
         switch (pressed) {
