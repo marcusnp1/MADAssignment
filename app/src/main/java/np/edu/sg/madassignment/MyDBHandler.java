@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 /**
  * Created by Admin on 04/06/2018.
  */
@@ -67,16 +69,17 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return comments;
     }
 
-    public String loadHandler() {
-        String result = "";
-        String query = "Select*FROM " + TABLE_COMMENTS;
+    public ArrayList<String> loadHandler() {
+        ArrayList<String> result = new ArrayList<>();
+        String query = "Select*FROM " + TABLE_COMMENTS ;
+
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
             int result_0 = cursor.getInt(0);
             String result_1 = cursor.getString(1);
-            result += String.valueOf(result_0) + "\n" + result_1 +
-                    System.getProperty("line.separator");
+            result.add( String.valueOf(result_0) + "\n" + result_1 +
+                    System.getProperty("line.separator"));
         }
         cursor.close();
         db.close();
