@@ -8,12 +8,16 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+
+import java.util.ArrayList;
 
 public class main2 extends AppCompatActivity
 {
@@ -24,12 +28,13 @@ public class main2 extends AppCompatActivity
     Button commentbutton;
     TextView commenttext;
     ImageView imgexercise;
-    TextView comments;
+    ListView comments;
     long timer;
+    MyDBHandler dbHandler = new MyDBHandler(this, null, null, 1);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyDBHandler dbHandler = new MyDBHandler(this, null, null, 1);
+
         setContentView(R.layout.main2); //set page to main2 OnStart
         txt = findViewById(R.id.text_timer);
         title = findViewById(R.id.textView3);
@@ -37,8 +42,11 @@ public class main2 extends AppCompatActivity
         imgexercise = findViewById(R.id.imageView2);
         commentbutton = findViewById(R.id.btnComment);
         commenttext = findViewById(R.id.txtComment);
-        comments = findViewById(R.id.txtComments);
-        comments.setText(dbHandler.loadHandler());
+        comments = findViewById(R.id.lv_comments);
+        ArrayList<String> List = new ArrayList<>(dbHandler.loadHandler());
+        List.add("Yes");
+        ArrayAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,List);
+        comments.setAdapter(adapter);
         Intent intent = getIntent();
         String grpName = ((Intent) intent).getStringExtra("ID");
         switch(grpName) {
@@ -160,13 +168,14 @@ public class main2 extends AppCompatActivity
 
     }
     public void addComment(View view) {
-        MyDBHandler dbHandler = new MyDBHandler(this, null, null, 1);
-        int id = 1;
+        int id = 0;
         String name = commenttext.getText().toString();
         Comments comment = new Comments(id, name);
         dbHandler.addHandler(comment);
         commenttext.setText("");
-        comments.setText(dbHandler.loadHandler());
+        ArrayList<String> List = dbHandler.loadHandler();
+        ArrayAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,List);
+        comments.setAdapter(adapter);
 
     }
 

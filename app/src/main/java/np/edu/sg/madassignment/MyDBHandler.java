@@ -44,9 +44,17 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     public void addHandler(Comments comment) {
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, comment.getUserID());
-        values.put(COLUMN_NAME, comment.getUserComments());
         SQLiteDatabase db = this.getWritableDatabase();
+        String query = "Select * FROM " + TABLE_COMMENTS;
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToLast();
+        Comments commen = new Comments();
+        commen.setUserID(Integer.parseInt(cursor.getString(0)));
+        cursor.close();
+        int id = commen.getUserID();
+        id += 1;
+        values.put(COLUMN_ID, id);
+        values.put(COLUMN_NAME, comment.getUserComments());
         db.insert(TABLE_COMMENTS, null, values);
         db.close();
     }
