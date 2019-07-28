@@ -49,6 +49,7 @@ public class main2 extends AppCompatActivity
         comments.setAdapter(adapter);
         Intent intent = getIntent();
         String grpName = ((Intent) intent).getStringExtra("ID");
+        //Populating individual pages with different routines
         switch(grpName) {
             case "Aerobic Exercise":
                 imgexercise.setImageResource(R.drawable.march);
@@ -87,6 +88,7 @@ public class main2 extends AppCompatActivity
 
 
 
+    //Implementing the Onclick method for Timer countdown
     public void onClick(View v) {
         Button b = (Button) v;
         String pressed = b.getText().toString();
@@ -129,6 +131,7 @@ public class main2 extends AppCompatActivity
 
         }
     }
+    // Method for starting the countdown Timer
     private void startTimer(int duration)
     {
         cdt = new CountDownTimer(duration*60000,1000) {
@@ -144,6 +147,7 @@ public class main2 extends AppCompatActivity
             }
 
             @Override
+            //Toast message will pop out when the Timer runs out
             public void onFinish() {
                 txt.setText("0:00");
 
@@ -167,6 +171,7 @@ public class main2 extends AppCompatActivity
         }.start();
 
     }
+    //Method for adding comments
     public void addComment(View view) {
         int id = 0;
         String name = commenttext.getText().toString();

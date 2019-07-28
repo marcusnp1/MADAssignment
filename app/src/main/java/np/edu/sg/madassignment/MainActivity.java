@@ -26,10 +26,12 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ArrayList<String> arrayList=new ArrayList<>();
+        //Populating Listview with exercises
         arrayList.add("Aerobic Exercise");
         arrayList.add("Strength Training");
         arrayList.add("Stretching");
         arrayList.add("Balance Exercise");
+
         data = new ArrayList<>();
         for(int i=0; i<4;i++) {
             Exercise s = new Exercise();
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
+            //Creating method to allow user to be linked to the respective exercise page when clicking on the individual titles
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(MainActivity.this, main2.class);
