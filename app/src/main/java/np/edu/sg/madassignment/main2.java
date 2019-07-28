@@ -8,10 +8,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +24,7 @@ public class main2 extends AppCompatActivity
     Button commentbutton;
     TextView commenttext;
     ImageView imgexercise;
-    ListView comments;
+    TextView comments;
     long timer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,8 @@ public class main2 extends AppCompatActivity
         imgexercise = findViewById(R.id.imageView2);
         commentbutton = findViewById(R.id.btnComment);
         commenttext = findViewById(R.id.txtComment);
-        comments = findViewById(R.id.lv_comments);
+        comments = findViewById(R.id.txtComments);
+        comments.setText(dbHandler.loadHandler());
         Intent intent = getIntent();
         String grpName = ((Intent) intent).getStringExtra("ID");
         switch(grpName) {
@@ -72,8 +71,6 @@ public class main2 extends AppCompatActivity
                         "Lift your knee towards the ceiling\nas high as possible then lower it\nafter you feel the stretch\n" +
                         "Repeat this 3-5 times with both legs.");
         }
-        ArrayAdapter arrayAdapter=new ArrayAdapter(this,android.R.layout.simple_list_item_1,dbHandler.loadHandler());
-        comments.setAdapter(arrayAdapter);
     }
 
 
@@ -88,8 +85,7 @@ public class main2 extends AppCompatActivity
 
 
         TextView tv = findViewById(R.id.text_timer);
-
-       // tv.setText(pressed);
+        tv.setText(pressed);
 
 
         switch (pressed) {
@@ -170,8 +166,8 @@ public class main2 extends AppCompatActivity
         Comments comment = new Comments(id, name);
         dbHandler.addHandler(comment);
         commenttext.setText("");
-        ArrayAdapter arrayAdapter=new ArrayAdapter(this,android.R.layout.simple_list_item_1,dbHandler.loadHandler());
-        comments.setAdapter(arrayAdapter);
+        comments.setText(dbHandler.loadHandler());
+
     }
 
 }

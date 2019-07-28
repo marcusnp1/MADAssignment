@@ -18,37 +18,47 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
 {
+    ArrayList<Exercise> data;
     ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        listView=(ListView)findViewById(R.id.listview);
-
         ArrayList<String> arrayList=new ArrayList<>();
-
         arrayList.add("Aerobic Exercise");
         arrayList.add("Strength Training");
         arrayList.add("Stretching");
         arrayList.add("Balance Exercise");
+        data = new ArrayList<>();
+        for(int i=0; i<4;i++) {
+            Exercise s = new Exercise();
+            String title = arrayList.get(i);
+            s.setTitle(title);
+            data.add(s);
+        }
 
 
-        ArrayAdapter arrayAdapter=new ArrayAdapter(this,android.R.layout.simple_list_item_1,arrayList);
-        listView.setAdapter(arrayAdapter);
+        ExerciseAdapter adapter = new ExerciseAdapter(this,R.layout.wolayout,data);
+        ListView list = findViewById(R.id.listview);
+        list.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(MainActivity.this, main2.class);
-                String selectedItem = (String) parent.getItemAtPosition(position);
-                intent.putExtra("ID", selectedItem);
+                Exercise selectedItem = (Exercise) parent.getItemAtPosition(position);
+                intent.putExtra("ID", selectedItem.getTitle());
                 startActivity(intent);
 
             }
         });
+    }
+    public void onClick()
+    {
+        Intent intentnew = new Intent(MainActivity.this, Main2Activity.class);
+        startActivity(intentnew);
     }
 
 }
